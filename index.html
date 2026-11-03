@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Resume & Cover Letter Tailor</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 900px; margin: 30px auto; padding: 20px; background: #0f172a; color: #f8fafc; }
+        .card { background: #1e293b; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        textarea { width: 100%; height: 120px; background: #0f172a; color: #fff; border: 1px: solid #334155; padding: 10px; border-radius: 4px; margin-top: 5px; }
+        button { background: #3b82f6; color: white; border: none; padding: 12px 20px; font-weight: bold; border-radius: 4px; cursor: pointer; width: 100%; }
+        button:hover { background: #2563eb; }
+        .output { background: #0f172a; padding: 15px; border-left: 4px solid #3b82f6; margin-top: 15px; white-space: pre-wrap; font-family: monospace; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <h1>🚀 AI Resume & Cover Letter Tailor</h1>
+    <p>Paste a job description and your basic bio to generate a targeted US-style cover letter instantly.</p>
+
+    <div class="card">
+        <label>1. Target Job Description:</label>
+        <textarea id="jobDesc" placeholder="Paste job requirements here (e.g., Python Developer needed)..."></textarea>
+    </div>
+
+    <div class="card">
+        <label>2. Your Skills & Experience Summary:</label>
+        <textarea id="userBio" placeholder="E.g., 2 years Python, built 5 open-source automation tools..."></textarea>
+    </div>
+
+    <button onclick="generateAI()">Generate Tailored Cover Letter ⚡</button>
+
+    <div class="card" id="resultCard" style="display:none;">
+        <h3>Generated AI Output:</h3>
+        <div class="output" id="outputBox"></div>
+    </div>
+
+    <script>
+        function generateAI() {
+            let job = document.getElementById('jobDesc').value;
+            let bio = document.getElementById('userBio').value;
+            
+            if(!job || !bio) {
+                alert("Please fill in both fields!");
+                return;
+            }
+
+            let mockLetter = `Dear Hiring Manager,\n\nI am writing to express my strong interest in this role. Based on your requirements, my background aligns perfectly:\n\n- Experience matches your core stack: ${bio.substring(0, 50)}...\n- Ready to bring immediate value and scale your systems.\n\nLooking forward to discussing how I can contribute.\n\nBest regards,\nOpen Source Developer`;
+
+            document.getElementById('resultCard').style.display = 'block';
+            document.getElementById('outputBox').innerText = mockLetter;
+        }
+    </script>
+</body>
+</html>
